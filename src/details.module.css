@@ -1,0 +1,39 @@
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #3e3b3ba1;
+  color: white;
+}
+
+.detay {
+  display: flex;
+  align-items: flex-start;
+  max-width: 800px;
+  background-color: rgba(0, 0, 0, 0.311);
+  border-radius: 1.4rem;
+  box-shadow: 0px 0px 20px 15px #90d3146a;
+}
+
+.detay img {
+  padding: 1.5rem 1.5rem;
+  max-width: 32rem;
+  border-radius: 2rem;
+}
+
+.detay button {
+  margin-top: 3rem;
+}
+.icerik {
+  padding: 3.2rem;
+}
+.icerik h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.4rem;
+  font-weight: bold;
+}
+
+.icerik p {
+  font-size: 1.4rem;
+}
