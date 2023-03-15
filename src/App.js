@@ -5,9 +5,24 @@ import SmallPreview from "./SmallPreview";
 import { Switch, Route } from "react-router-dom";
 import Details from "./Details";
 
+let key = "dizi";
+
+function localSTorageStateYaz(key, item) {
+  window.localStorage.setItem(key, JSON.stringify(item));
+}
+
+function localStorageStateOku(key) {
+  if (JSON.parse(localStorage.getItem(key)))
+    return JSON.parse(localStorage.getItem(key));
+  else {
+    window.localStorage.setItem(key, JSON.stringify([]));
+    return JSON.parse(window.localStorage.getItem(key));
+  }
+}
+
 function App() {
   const [shows, setShows] = useState([]);
-  const [watchList, setWatchList] = useState([]);
+  const [watchList, setWatchList] = useState(localStorageStateOku(key));
   const [current, setCurrent] = useState(null);
   const [page, setPage] = useState(1);
   const [searchText, setSearchText] = useState("");
@@ -28,12 +43,15 @@ function App() {
       alert("listede var");
     } else {
       setWatchList([...watchList, diziObj]);
+      localSTorageStateYaz(key, [...watchList, diziObj]);
     }
   }
 
   function handleRemove(id) {
     const yeniListe = watchList.filter((dizi) => dizi.id !== id);
+
     setWatchList(yeniListe);
+    localSTorageStateYaz(key, yeniListe);
   }
 
   function changePage(newNumber) {
